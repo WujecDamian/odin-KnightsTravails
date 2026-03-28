@@ -2,5 +2,5 @@
 import "./styles.css";
 import { knightMoves } from "./scripts/knightMoves.js";
 
-let knight = knightMoves;
+let knight = knightMoves();
 knight.findShortest([4, 0], [3, 7]);
