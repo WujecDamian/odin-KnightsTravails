@@ -19,7 +19,6 @@ export function knightMoves() {
           }
         });
       }
-      console.log(`Visited array${visitedArr.visitedArr[2]}`);
 
       function moveKnight(startPoint, endPoint) {
         queue.splice(0, 1);
@@ -41,7 +40,6 @@ export function knightMoves() {
               founded = [startPoint[0] + 1, startPoint[1] + 2];
             }
             if (hasFound === false) {
-              console.log(`up right ${[startPoint[0] + 1, startPoint[1] + 2]}`);
               visitedArr.add(startPoint[0] + 1, startPoint[1] + 2);
               queue.push([startPoint[0] + 1, startPoint[1] + 2]);
             }
@@ -65,7 +63,6 @@ export function knightMoves() {
               founded = [startPoint[0] - 1, startPoint[1] + 2];
             }
             if (hasFound === false) {
-              console.log(`up left ${[startPoint[0] - 1, startPoint[1] + 2]}`);
               visitedArr.add(startPoint[0] - 1, startPoint[1] + 2);
               queue.push([startPoint[0] - 1, startPoint[1] + 2]);
             }
@@ -92,7 +89,6 @@ export function knightMoves() {
               founded = [startPoint[0] + 2, startPoint[1] + 1];
             }
             if (hasFound === false) {
-              console.log(`right up ${[startPoint[0] + 2, startPoint[1] + 1]}`);
               visitedArr.add(startPoint[0] + 2, startPoint[1] + 1);
               queue.push([startPoint[0] + 2, startPoint[1] + 1]);
             }
@@ -116,9 +112,6 @@ export function knightMoves() {
               founded = [startPoint[0] + 2, startPoint[1] - 1];
             }
             if (hasFound === false) {
-              console.log(
-                `right down ${[startPoint[0] + 2, startPoint[1] - 1]}`,
-              );
               visitedArr.add(startPoint[0] + 2, startPoint[1] - 1);
               queue.push([startPoint[0] + 2, startPoint[1] - 1]);
             }
@@ -144,9 +137,6 @@ export function knightMoves() {
               founded = [startPoint[0] + 1, startPoint[1] - 2];
             }
             if (hasFound === false) {
-              console.log(
-                `down right${[startPoint[0] + 1, startPoint[1] - 2]}`,
-              );
               visitedArr.add(startPoint[0] + 1, startPoint[1] - 2);
               queue.push([startPoint[0] + 1, startPoint[1] - 2]);
             }
@@ -171,9 +161,6 @@ export function knightMoves() {
               founded = [startPoint[0] - 1, startPoint[1] - 2];
             }
             if (hasFound === false) {
-              console.log(
-                `down left ${[startPoint[0] - 1, startPoint[1] - 2]}`,
-              );
               visitedArr.add(startPoint[0] - 1, startPoint[1] - 2);
               queue.push([startPoint[0] - 1, startPoint[1] - 2]);
             }
@@ -197,9 +184,6 @@ export function knightMoves() {
               founded = [startPoint[0] - 2, startPoint[1] - 1];
             }
             if (hasFound === false) {
-              console.log(
-                `left down ${[startPoint[0] - 2, startPoint[1] - 1]}`,
-              );
               visitedArr.add(startPoint[0] - 2, startPoint[1] - 1);
               queue.push([startPoint[0] - 2, startPoint[1] - 1]);
             }
@@ -225,7 +209,6 @@ export function knightMoves() {
               path.push([startPoint[0] - 2, startPoint[1] + 1]);
             }
             if (hasFound === false) {
-              console.log(`left up ${[startPoint[0] - 2, startPoint[1] + 1]}`);
               visitedArr.add(startPoint[0] - 2, startPoint[1] + 1);
               queue.push([startPoint[0] - 2, startPoint[1] + 1]);
             }
@@ -236,7 +219,6 @@ export function knightMoves() {
           visitedArr.add(founded);
           path.push(founded);
         }
-        visitedArr.logVisited();
         moveKnightArray();
       }
       function reconstructPath() {
