@@ -8,7 +8,6 @@ export function visited() {
       console.table(this.visitedArr);
     },
     isVisited(coordinates) {
-      console.log("Isn't visited");
       for (let i = 0; i < this.visitedArr.length; i++) {
         if (this.visitedArr[i] === coordinates) {
           return true;
