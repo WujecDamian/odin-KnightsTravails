@@ -9,11 +9,12 @@ export function visited() {
     },
     isVisited(coordinates) {
       for (let i = 0; i < this.visitedArr.length; i++) {
-        if (this.visitedArr[i] === coordinates) {
+        if (
+          JSON.stringify(this.visitedArr[i]) === JSON.stringify(coordinates)
+        ) {
           return true;
         }
       }
-
       return false;
     },
   };
