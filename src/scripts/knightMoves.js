@@ -6,6 +6,7 @@ export function knightMoves() {
       let visitedArr = visited();
       let queue = [];
       let path = [];
+      let founded;
       let hasFound = false;
       moveKnightArray();
       function moveKnightArray() {
@@ -37,8 +38,7 @@ export function knightMoves() {
               startPoint[1] + 2 === endPoint[1]
             ) {
               hasFound = true;
-              visitedArr.add(startPoint[0] + 1, startPoint[1] + 2);
-              path.push([startPoint[0] + 1, startPoint[1] + 2]);
+              founded = [startPoint[0] + 1, startPoint[1] + 2];
             }
             if (hasFound === false) {
               console.log(`up right ${[startPoint[0] + 1, startPoint[1] + 2]}`);
@@ -46,7 +46,7 @@ export function knightMoves() {
               queue.push([startPoint[0] + 1, startPoint[1] + 2]);
             }
           }
-        } else return;
+        }
 
         if (
           visitedArr.isVisited([startPoint[0] - 1, startPoint[1] + 2]) === false
@@ -62,8 +62,7 @@ export function knightMoves() {
               startPoint[1] + 2 === endPoint[1]
             ) {
               hasFound = true;
-              visitedArr.add(startPoint[0] - 1, startPoint[1] + 2);
-              path.push([startPoint[0] - 1, startPoint[1] + 2]);
+              founded = [startPoint[0] - 1, startPoint[1] + 2];
             }
             if (hasFound === false) {
               console.log(`up left ${[startPoint[0] - 1, startPoint[1] + 2]}`);
@@ -71,7 +70,7 @@ export function knightMoves() {
               queue.push([startPoint[0] - 1, startPoint[1] + 2]);
             }
           }
-        } else return;
+        }
         / right up /;
 
         //! here path.push(startPoint); seems to work on knight.findShortest([4, 0], [3, 7]);
@@ -90,8 +89,7 @@ export function knightMoves() {
               startPoint[1] + 1 === endPoint[1]
             ) {
               hasFound = true;
-              visitedArr.add(startPoint[0] + 2, startPoint[1] + 1);
-              path.push([startPoint[0] + 2, startPoint[1] + 1]);
+              founded = [startPoint[0] + 2, startPoint[1] + 1];
             }
             if (hasFound === false) {
               console.log(`right up ${[startPoint[0] + 2, startPoint[1] + 1]}`);
@@ -115,8 +113,7 @@ export function knightMoves() {
               startPoint[1] - 1 === endPoint[1]
             ) {
               hasFound = true;
-              visitedArr.add(startPoint[0] + 2, startPoint[1] - 1);
-              path.push([startPoint[0] + 2, startPoint[1] - 1]);
+              founded = [startPoint[0] + 2, startPoint[1] - 1];
             }
             if (hasFound === false) {
               console.log(
@@ -144,8 +141,7 @@ export function knightMoves() {
               startPoint[1] - 2 === endPoint[1]
             ) {
               hasFound = true;
-              visitedArr.add(startPoint[0] + 1, startPoint[1] - 2);
-              path.push([startPoint[0] + 1, startPoint[1] - 2]);
+              founded = [startPoint[0] + 1, startPoint[1] - 2];
             }
             if (hasFound === false) {
               console.log(
@@ -172,8 +168,7 @@ export function knightMoves() {
               startPoint[1] - 2 === endPoint[1]
             ) {
               hasFound = true;
-              visitedArr.add(startPoint[0] - 1, startPoint[1] - 2);
-              path.push([startPoint[0] - 1, startPoint[1] - 2]);
+              founded = [startPoint[0] - 1, startPoint[1] - 2];
             }
             if (hasFound === false) {
               console.log(
@@ -199,8 +194,7 @@ export function knightMoves() {
               startPoint[1] - 1 === endPoint[1]
             ) {
               hasFound = true;
-              visitedArr.add(startPoint[0] - 2, startPoint[1] - 1);
-              path.push([startPoint[0] - 2, startPoint[1] - 1]);
+              founded = [startPoint[0] - 2, startPoint[1] - 1];
             }
             if (hasFound === false) {
               console.log(
@@ -227,7 +221,7 @@ export function knightMoves() {
               startPoint[1] + 1 === endPoint[1]
             ) {
               hasFound = true;
-              visitedArr.add(startPoint[0] - 2, startPoint[1] + 1);
+              founded = [startPoint[0] - 2, startPoint[1] + 1];
               path.push([startPoint[0] - 2, startPoint[1] + 1]);
             }
             if (hasFound === false) {
@@ -238,6 +232,10 @@ export function knightMoves() {
           }
         }
         path.push(startPoint);
+        if (hasFound === true) {
+          visitedArr.add(founded);
+          path.push(founded);
+        }
         visitedArr.logVisited();
         moveKnightArray();
       }
