@@ -15,7 +15,7 @@ export function knightMoves() {
           ) {
             console.log(`Found shortest path to ! ${endPoint}`);
           }
-          if (visitedArr[0] != [startPoint[0] + 1, startPoint[1] + 2]) {
+          if (!visitedArr.isVisited([startPoint[0] + 1, startPoint[1] + 2])) {
             console.log(`${[startPoint[0] + 1, startPoint[1] + 2]}`);
             visitedArr.add(startPoint[0] + 1, startPoint[1] + 2);
             moveKnight([startPoint[0] + 1, startPoint[1] + 2], endPoint);
@@ -31,7 +31,7 @@ export function knightMoves() {
         ) {
           console.log(`Found shortest path to ! ${endPoint}`);
         }
-        if (visitedArr[0] != [startPoint[0] - 1, startPoint[1] + 2]) {
+        if (!visitedArr.isVisited([startPoint[0] - 1, startPoint[1] + 2])) {
           console.log(`${[startPoint[0] - 1, startPoint[1] + 2]}`);
           visitedArr.add(startPoint[0] - 1, startPoint[1] + 2);
           moveKnight([startPoint[0] - 1, startPoint[1] + 2], endPoint);
@@ -46,7 +46,7 @@ export function knightMoves() {
         ) {
           console.log(`Found shortest path to ! ${endPoint}`);
         }
-        if (visitedArr[0] != [startPoint[0] + 2, startPoint[1] + 1]) {
+        if (!visitedArr.isVisited([startPoint[0] + 2, startPoint[1] + 1])) {
           console.log(`${[startPoint[0] + 2, startPoint[1] + 1]}`);
           visitedArr.add(startPoint[0] + 2, startPoint[1] + 1);
           moveKnight([startPoint[0] + 2, startPoint[1] + 1], endPoint);
@@ -61,7 +61,7 @@ export function knightMoves() {
         ) {
           console.log(`Found shortest path to ! ${endPoint}`);
         }
-        if (visitedArr[0] != [startPoint[0] + 2, startPoint[1] - 1]) {
+        if (!visitedArr.isVisited([startPoint[0] + 2, startPoint[1] - 1])) {
           console.log(`${[startPoint[0] + 2, startPoint[1] - 1]}`);
           visitedArr.add(startPoint[0] + 2, startPoint[1] - 1);
           moveKnight([startPoint[0] + 2, startPoint[1] - 1], endPoint);
@@ -77,7 +77,7 @@ export function knightMoves() {
         ) {
           console.log(`Found shortest path to ! ${endPoint}`);
         }
-        if (visitedArr[0] != [startPoint[0] + 1, startPoint[1] - 2]) {
+        if (!visitedArr.isVisited([startPoint[0] + 1, startPoint[1] - 2])) {
           console.log(`${[startPoint[0] + 1, startPoint[1] - 2]}`);
           visitedArr.add(startPoint[0] + 1, startPoint[1] - 2);
           moveKnight([startPoint[0] + 1, startPoint[1] - 2], endPoint);
@@ -92,7 +92,7 @@ export function knightMoves() {
         ) {
           console.log(`Found shortest path to ! ${endPoint}`);
         }
-        if (visitedArr[0] != [startPoint[0] - 1, startPoint[1] - 2]) {
+        if (!visitedArr.isVisited([startPoint[0] - 1, startPoint[1] - 2])) {
           console.log(`${[startPoint[0] - 1, startPoint[1] - 2]}`);
           visitedArr.add(startPoint[0] - 1, startPoint[1] - 2);
           moveKnight([startPoint[0] - 1, startPoint[1] - 2], endPoint);
@@ -107,14 +107,19 @@ export function knightMoves() {
         ) {
           console.log(`Found shortest path to ! ${endPoint}`);
         }
-        if (visitedArr[0] != [startPoint[0] - 2, startPoint[1] - 1]) {
+        if (!visitedArr.isVisited([startPoint[0] - 2, startPoint[1] - 1])) {
           console.log(`${[startPoint[0] - 2, startPoint[1] - 1]}`);
           visitedArr.add(startPoint[0] - 2, startPoint[1] - 1);
           moveKnight([startPoint[0] - 2, startPoint[1] - 1], endPoint);
         }
       }
       / left up -2 +1/;
-      if (startPoint[0] - 2 < 8 && startPoint[1] + 1 < 8) {
+      if (
+        startPoint[0] - 2 < 8 &&
+        startPoint[1] + 1 < 8 &&
+        startPoint[0] - 2 >= 0 &&
+        startPoint[1] >= 0
+      ) {
         visitedArr.logVisited();
         if (
           startPoint[0] - 2 === endPoint[0] &&
@@ -122,7 +127,7 @@ export function knightMoves() {
         ) {
           console.log(`Found shortest path to ! ${endPoint}`);
         }
-        if (visitedArr[0] != [startPoint[0] - 2, startPoint[1] + 1]) {
+        if (!visitedArr.isVisited([startPoint[0] - 2, startPoint[1] + 1])) {
           console.log(`${[startPoint[0] - 2, startPoint[1] + 1]}`);
           visitedArr.add(startPoint[0] - 2, startPoint[1] + 1);
           moveKnight([startPoint[0] - 2, startPoint[1] + 1], endPoint);
