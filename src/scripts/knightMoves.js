@@ -7,16 +7,17 @@ export function knightMoves() {
       let queue = [];
       moveKnightArray();
       function moveKnightArray() {
-        if (visitedArr.visitedArr.length === 0) {
+        if (queue.length === 0) {
           moveKnight(startPoint, endPoint);
         }
-        visitedArr.visitedArr.forEach((element) => {
+        queue.forEach((element) => {
           moveKnight(element, endPoint);
         });
       }
       console.log(`Visited array${visitedArr.visitedArr[2]}`);
 
       function moveKnight(startPoint, endPoint) {
+        queue.splice(0, 1);
         if (
           visitedArr.isVisited([startPoint[0] + 1, startPoint[1] + 2]) === false
         ) {
@@ -34,6 +35,7 @@ export function knightMoves() {
             }
             console.log(`up right ${[startPoint[0] + 1, startPoint[1] + 2]}`);
             visitedArr.add(startPoint[0] + 1, startPoint[1] + 2);
+            queue.push([startPoint[0] + 1, startPoint[1] + 2]);
           }
         }
         if (
@@ -53,6 +55,7 @@ export function knightMoves() {
             }
             console.log(`up left ${[startPoint[0] - 1, startPoint[1] + 2]}`);
             visitedArr.add(startPoint[0] - 1, startPoint[1] + 2);
+            queue.push([startPoint[0] - 1, startPoint[1] + 2]);
           }
         } else return;
         / right up /;
@@ -73,6 +76,7 @@ export function knightMoves() {
             }
             console.log(`right up ${[startPoint[0] + 2, startPoint[1] + 1]}`);
             visitedArr.add(startPoint[0] + 2, startPoint[1] + 1);
+            queue.push([startPoint[0] + 2, startPoint[1] + 1]);
           }
         }
         / right down /;
@@ -93,6 +97,7 @@ export function knightMoves() {
             }
             console.log(`right down ${[startPoint[0] + 2, startPoint[1] - 1]}`);
             visitedArr.add(startPoint[0] + 2, startPoint[1] - 1);
+            queue.push([startPoint[0] + 2, startPoint[1] - 1]);
           }
         }
         /up left +1 -2/;
@@ -114,6 +119,7 @@ export function knightMoves() {
             }
             console.log(`down right${[startPoint[0] + 1, startPoint[1] - 2]}`);
             visitedArr.add(startPoint[0] + 1, startPoint[1] - 2);
+            queue.push([startPoint[0] + 1, startPoint[1] - 2]);
           }
         }
         / down left -1 -2/;
@@ -134,6 +140,7 @@ export function knightMoves() {
             }
             console.log(`down left ${[startPoint[0] - 1, startPoint[1] - 2]}`);
             visitedArr.add(startPoint[0] - 1, startPoint[1] - 2);
+            queue.push([startPoint[0] - 1, startPoint[1] - 2]);
           }
         }
         / left down -2 -1/;
@@ -154,6 +161,7 @@ export function knightMoves() {
             }
             console.log(`left down ${[startPoint[0] - 2, startPoint[1] - 1]}`);
             visitedArr.add(startPoint[0] - 2, startPoint[1] - 1);
+            queue.push([startPoint[0] - 2, startPoint[1] - 1]);
           }
         }
         / left up -2 +1/;
@@ -174,6 +182,7 @@ export function knightMoves() {
             }
             console.log(`left up ${[startPoint[0] - 2, startPoint[1] + 1]}`);
             visitedArr.add(startPoint[0] - 2, startPoint[1] + 1);
+            queue.push([startPoint[0] - 2, startPoint[1] + 1]);
           }
         }
         visitedArr.logVisited();
