@@ -4,47 +4,130 @@ export function knightMoves() {
   return {
     findShortest(startPoint, endPoint) {
       let visitedArr = visited();
+      moveKnight(startPoint, endPoint);
+
       function moveKnight(startPoint, endPoint) {
         if (startPoint[0] + 1 < 8 && startPoint[1] + 2 < 8) {
           visitedArr.logVisited();
-        }
-        if (visitedArr[0] != [startPoint[0] + 1, startPoint[1] + 2]) {
-          console.log(`${[startPoint[0] + 1, startPoint[1] + 2]}`);
-          visitedArr.add(startPoint[0] + 1, startPoint[1] + 2);
-          moveKnight([startPoint[0] + 1, startPoint[1] + 2], endPoint);
+          if (
+            startPoint[0] + 1 === endPoint[0] &&
+            startPoint[1] + 2 === endPoint[1]
+          ) {
+            console.log(`Found shortest path to ! ${endPoint}`);
+          }
+          if (visitedArr[0] != [startPoint[0] + 1, startPoint[1] + 2]) {
+            console.log(`${[startPoint[0] + 1, startPoint[1] + 2]}`);
+            visitedArr.add(startPoint[0] + 1, startPoint[1] + 2);
+            moveKnight([startPoint[0] + 1, startPoint[1] + 2], endPoint);
+          }
         }
       }
-      /* up left /
-        / if (startPoint[0] - 1 < 8 && startPoint[1] + 2 < 8) {
-          moveKnight([startPoint[0] - 1, startPoint[1] + 2], endPoint);
-        } /
-        / right up /
-        / if (startPoint[0] + 2 < 8 && startPoint[1] + 1 < 8) {
-          moveKnight([startPoint[0] + 2, startPoint[1] + 1], endPoint);
-        } /
-        / right down /
-        / if (startPoint[0] + 2 < 8 && startPoint[1] - 1 < 8) {
-          moveKnight([startPoint[0] + 2, startPoint[1] - 1], endPoint);
-        } /
 
-        //here  i get full stack error when there is too much if's
-        / down right /
-        / if (startPoint[0] + 1 < 8 && startPoint[1] - 2 < 8) {
+      if (startPoint[0] - 1 < 8 && startPoint[1] + 2 < 8) {
+        visitedArr.logVisited();
+        if (
+          startPoint[0] - 1 === endPoint[0] &&
+          startPoint[1] + 2 === endPoint[1]
+        ) {
+          console.log(`Found shortest path to ! ${endPoint}`);
+        }
+        if (visitedArr[0] != [startPoint[0] - 1, startPoint[1] + 2]) {
+          console.log(`${[startPoint[0] - 1, startPoint[1] + 2]}`);
+          visitedArr.add(startPoint[0] - 1, startPoint[1] + 2);
+          moveKnight([startPoint[0] - 1, startPoint[1] + 2], endPoint);
+        }
+      }
+      / right up /;
+      if (startPoint[0] + 2 < 8 && startPoint[1] + 1 < 8) {
+        visitedArr.logVisited();
+        if (
+          startPoint[0] + 2 === endPoint[0] &&
+          startPoint[1] + 1 === endPoint[1]
+        ) {
+          console.log(`Found shortest path to ! ${endPoint}`);
+        }
+        if (visitedArr[0] != [startPoint[0] + 2, startPoint[1] + 1]) {
+          console.log(`${[startPoint[0] + 2, startPoint[1] + 1]}`);
+          visitedArr.add(startPoint[0] + 2, startPoint[1] + 1);
+          moveKnight([startPoint[0] + 2, startPoint[1] + 1], endPoint);
+        }
+      }
+      / right down /;
+      if (startPoint[0] + 2 < 8 && startPoint[1] - 1 < 8) {
+        visitedArr.logVisited();
+        if (
+          startPoint[0] + 2 === endPoint[0] &&
+          startPoint[1] - 1 === endPoint[1]
+        ) {
+          console.log(`Found shortest path to ! ${endPoint}`);
+        }
+        if (visitedArr[0] != [startPoint[0] + 2, startPoint[1] - 1]) {
+          console.log(`${[startPoint[0] + 2, startPoint[1] - 1]}`);
+          visitedArr.add(startPoint[0] + 2, startPoint[1] - 1);
+          moveKnight([startPoint[0] + 2, startPoint[1] - 1], endPoint);
+        }
+      }
+      /up left +1 -2/;
+      //here  i get full stack error when there is too much if's
+      if (startPoint[0] + 1 < 8 && startPoint[1] - 2 < 8) {
+        visitedArr.logVisited();
+        if (
+          startPoint[0] + 1 === endPoint[0] &&
+          startPoint[1] - 2 === endPoint[1]
+        ) {
+          console.log(`Found shortest path to ! ${endPoint}`);
+        }
+        if (visitedArr[0] != [startPoint[0] + 1, startPoint[1] - 2]) {
+          console.log(`${[startPoint[0] + 1, startPoint[1] - 2]}`);
+          visitedArr.add(startPoint[0] + 1, startPoint[1] - 2);
           moveKnight([startPoint[0] + 1, startPoint[1] - 2], endPoint);
-        } /
-        / down left /
-        / if (startPoint[0] - 1 < 8 && startPoint[1] - 2 < 8) {
+        }
+      }
+      / down left -1 -2/;
+      if (startPoint[0] - 1 < 8 && startPoint[1] - 2 < 8) {
+        visitedArr.logVisited();
+        if (
+          startPoint[0] - 1 === endPoint[0] &&
+          startPoint[1] - 2 === endPoint[1]
+        ) {
+          console.log(`Found shortest path to ! ${endPoint}`);
+        }
+        if (visitedArr[0] != [startPoint[0] - 1, startPoint[1] - 2]) {
+          console.log(`${[startPoint[0] - 1, startPoint[1] - 2]}`);
+          visitedArr.add(startPoint[0] - 1, startPoint[1] - 2);
           moveKnight([startPoint[0] - 1, startPoint[1] - 2], endPoint);
-        } /
-        / left down /
-        / if (startPoint[0] - 2 < 8 && startPoint[1] - 1 < 8) {
+        }
+      }
+      / left down -2 -1/;
+      if (startPoint[0] - 2 < 8 && startPoint[1] - 1 < 8) {
+        visitedArr.logVisited();
+        if (
+          startPoint[0] - 2 === endPoint[0] &&
+          startPoint[1] - 1 === endPoint[1]
+        ) {
+          console.log(`Found shortest path to ! ${endPoint}`);
+        }
+        if (visitedArr[0] != [startPoint[0] - 2, startPoint[1] - 1]) {
+          console.log(`${[startPoint[0] - 2, startPoint[1] - 1]}`);
+          visitedArr.add(startPoint[0] - 2, startPoint[1] - 1);
           moveKnight([startPoint[0] - 2, startPoint[1] - 1], endPoint);
-        } /
-        / left up /
-        / if (startPoint[0] - 2 < 8 && startPoint[1] + 1 < 8) {
+        }
+      }
+      / left up -2 +1/;
+      if (startPoint[0] - 2 < 8 && startPoint[1] + 1 < 8) {
+        visitedArr.logVisited();
+        if (
+          startPoint[0] - 2 === endPoint[0] &&
+          startPoint[1] + 1 === endPoint[1]
+        ) {
+          console.log(`Found shortest path to ! ${endPoint}`);
+        }
+        if (visitedArr[0] != [startPoint[0] - 2, startPoint[1] + 1]) {
+          console.log(`${[startPoint[0] - 2, startPoint[1] + 1]}`);
+          visitedArr.add(startPoint[0] - 2, startPoint[1] + 1);
           moveKnight([startPoint[0] - 2, startPoint[1] + 1], endPoint);
-        } */
-      moveKnight(startPoint, endPoint);
+        }
+      }
     },
   };
 }
