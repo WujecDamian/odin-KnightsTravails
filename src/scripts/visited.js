@@ -7,5 +7,15 @@ export function visited() {
     logVisited() {
       console.table(this.visitedArr);
     },
+    isVisited(coordinates) {
+      for (let i = 0; i < this.visitedArr.length; i++) {
+        if (
+          JSON.stringify(this.visitedArr[i]) === JSON.stringify(coordinates)
+        ) {
+          return true;
+        }
+      }
+      return false;
+    },
   };
 }
