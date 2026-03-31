@@ -5,7 +5,6 @@ export function knightMoves() {
     findShortest(startPoint, endPoint) {
       let visitedArr = visited();
       let queue = [];
-      let path = [];
       let parent = {}; // key = position (as string or array), value = previous position
       let startKey = JSON.stringify(startPoint); // or JSON.stringify if you prefer
       parent[startKey] = null; // start has no parent
@@ -219,16 +218,15 @@ export function knightMoves() {
             }
           }
         }
-        path.push(startPoint);
 
         if (hasFound === true) {
           visitedArr.add(founded);
-          path.push(founded);
         }
         moveKnightArray();
       }
       function reconstructPath() {
-        console.table(path);
+        let path = [];
+        console.table(parent);
       }
       reconstructPath();
     },
