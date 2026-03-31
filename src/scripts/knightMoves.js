@@ -220,9 +220,7 @@ export function knightMoves() {
 
         moveKnightArray();
       }
-      function reconstructPath() {
-        console.table(path);
-      }
+      function reconstructPath() {}
       reconstructPath();
     },
   };
