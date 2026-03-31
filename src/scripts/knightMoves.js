@@ -221,12 +221,22 @@ export function knightMoves() {
 
         if (hasFound === true) {
           visitedArr.add(founded);
+          parent[JSON.stringify(founded)] = startPoint;
         }
         moveKnightArray();
       }
       function reconstructPath() {
+        /* we don't have last key (our endPoint) */
         let path = [];
-        console.table(parent);
+        let current = JSON.stringify(endPoint);
+        path.push(`${current[1]},${current[3]}`);
+        while (current !== JSON.stringify(startPoint)) {
+          path.push(parent[current]);
+          current = JSON.stringify(parent[current]);
+        }
+        path.reverse();
+
+        console.log(`${path.join(" => ")}`);
       }
       reconstructPath();
     },
