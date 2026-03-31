@@ -6,6 +6,7 @@ export function knightMoves() {
       let visitedArr = visited();
       let queue = [];
       let path = [];
+      let parent = {};
       let founded;
       let hasFound = false;
       moveKnightArray();
@@ -42,6 +43,8 @@ export function knightMoves() {
               visitedArr.add(startPoint[0] + 1, startPoint[1] + 2);
               queue.push([startPoint[0] + 1, startPoint[1] + 2]);
             }
+            parent[(startPoint[0] + 1) * 8 + (startPoint[1] + 2)] =
+              startPoint[0] * 8 + startPoint[1];
           }
         }
         if (
@@ -64,6 +67,8 @@ export function knightMoves() {
               visitedArr.add(startPoint[0] - 1, startPoint[1] + 2);
               queue.push([startPoint[0] - 1, startPoint[1] + 2]);
             }
+            parent[(startPoint[0] - 1) * 8 + (startPoint[1] + 2)] =
+              startPoint[0] * 8 + startPoint[1];
           }
         }
 
@@ -87,6 +92,8 @@ export function knightMoves() {
               visitedArr.add(startPoint[0] + 2, startPoint[1] + 1);
               queue.push([startPoint[0] + 2, startPoint[1] + 1]);
             }
+            parent[(startPoint[0] + 2) * 8 + (startPoint[1] + 1)] =
+              startPoint[0] * 8 + startPoint[1];
           }
         }
         if (
@@ -109,6 +116,8 @@ export function knightMoves() {
               visitedArr.add(startPoint[0] + 2, startPoint[1] - 1);
               queue.push([startPoint[0] + 2, startPoint[1] - 1]);
             }
+            parent[(startPoint[0] + 2) * 8 + (startPoint[1] - 1)] =
+              startPoint[0] * 8 + startPoint[1];
           }
         }
 
@@ -132,6 +141,8 @@ export function knightMoves() {
               visitedArr.add(startPoint[0] + 1, startPoint[1] - 2);
               queue.push([startPoint[0] + 1, startPoint[1] - 2]);
             }
+            parent[(startPoint[0] + 1) * 8 + (startPoint[1] - 2)] =
+              startPoint[0] * 8 + startPoint[1];
           }
         }
         if (
@@ -154,6 +165,8 @@ export function knightMoves() {
               visitedArr.add(startPoint[0] - 1, startPoint[1] - 2);
               queue.push([startPoint[0] - 1, startPoint[1] - 2]);
             }
+            parent[(startPoint[0] - 1) * 8 + (startPoint[1] - 2)] =
+              startPoint[0] * 8 + startPoint[1];
           }
         }
         if (
@@ -176,6 +189,8 @@ export function knightMoves() {
               visitedArr.add(startPoint[0] - 2, startPoint[1] - 1);
               queue.push([startPoint[0] - 2, startPoint[1] - 1]);
             }
+            parent[(startPoint[0] - 2) * 8 + (startPoint[1] - 1)] =
+              startPoint[0] * 8 + startPoint[1];
           }
         }
         if (
@@ -198,14 +213,11 @@ export function knightMoves() {
               visitedArr.add(startPoint[0] - 2, startPoint[1] + 1);
               queue.push([startPoint[0] - 2, startPoint[1] + 1]);
             }
+            parent[(startPoint[0] - 2) * 8 + (startPoint[1] + 1)] =
+              startPoint[0] * 8 + startPoint[1];
           }
         }
-        path.push(startPoint);
 
-        if (hasFound === true) {
-          visitedArr.add(founded);
-          path.push(founded);
-        }
         moveKnightArray();
       }
       function reconstructPath() {
