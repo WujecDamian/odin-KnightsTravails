@@ -6,6 +6,9 @@ export function knightMoves() {
       let visitedArr = visited();
       let queue = [];
       let path = [];
+      let parent = {}; // key = position (as string or array), value = previous position
+      let startKey = JSON.stringify(startPoint); // or JSON.stringify if you prefer
+      parent[startKey] = null; // start has no parent
       let founded;
       let hasFound = false;
       moveKnightArray();
@@ -41,6 +44,8 @@ export function knightMoves() {
             if (hasFound === false) {
               visitedArr.add(startPoint[0] + 1, startPoint[1] + 2);
               queue.push([startPoint[0] + 1, startPoint[1] + 2]);
+              parent[JSON.stringify([startPoint[0] + 1, startPoint[1] + 2])] =
+                startPoint;
             }
           }
         }
@@ -63,6 +68,8 @@ export function knightMoves() {
             if (hasFound === false) {
               visitedArr.add(startPoint[0] - 1, startPoint[1] + 2);
               queue.push([startPoint[0] - 1, startPoint[1] + 2]);
+              parent[JSON.stringify([startPoint[0] - 1, startPoint[1] + 2])] =
+                startPoint;
             }
           }
         }
@@ -86,6 +93,8 @@ export function knightMoves() {
             if (hasFound === false) {
               visitedArr.add(startPoint[0] + 2, startPoint[1] + 1);
               queue.push([startPoint[0] + 2, startPoint[1] + 1]);
+              parent[JSON.stringify([startPoint[0] + 2, startPoint[1] + 1])] =
+                startPoint;
             }
           }
         }
@@ -108,6 +117,8 @@ export function knightMoves() {
             if (hasFound === false) {
               visitedArr.add(startPoint[0] + 2, startPoint[1] - 1);
               queue.push([startPoint[0] + 2, startPoint[1] - 1]);
+              parent[JSON.stringify([startPoint[0] + 2, startPoint[1] - 1])] =
+                startPoint;
             }
           }
         }
@@ -131,6 +142,8 @@ export function knightMoves() {
             if (hasFound === false) {
               visitedArr.add(startPoint[0] + 1, startPoint[1] - 2);
               queue.push([startPoint[0] + 1, startPoint[1] - 2]);
+              parent[JSON.stringify([startPoint[0] + 1, startPoint[1] - 2])] =
+                startPoint;
             }
           }
         }
@@ -153,6 +166,8 @@ export function knightMoves() {
             if (hasFound === false) {
               visitedArr.add(startPoint[0] - 1, startPoint[1] - 2);
               queue.push([startPoint[0] - 1, startPoint[1] - 2]);
+              parent[JSON.stringify([startPoint[0] - 1, startPoint[1] - 2])] =
+                startPoint;
             }
           }
         }
@@ -175,6 +190,8 @@ export function knightMoves() {
             if (hasFound === false) {
               visitedArr.add(startPoint[0] - 2, startPoint[1] - 1);
               queue.push([startPoint[0] - 2, startPoint[1] - 1]);
+              parent[JSON.stringify([startPoint[0] - 2, startPoint[1] - 1])] =
+                startPoint;
             }
           }
         }
@@ -197,6 +214,8 @@ export function knightMoves() {
             if (hasFound === false) {
               visitedArr.add(startPoint[0] - 2, startPoint[1] + 1);
               queue.push([startPoint[0] - 2, startPoint[1] + 1]);
+              parent[JSON.stringify([startPoint[0] - 2, startPoint[1] + 1])] =
+                startPoint;
             }
           }
         }
