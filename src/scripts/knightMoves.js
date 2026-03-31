@@ -112,7 +112,6 @@ export function knightMoves() {
           }
         }
 
-        //here  i get full stack error when there is too much if's
         if (
           visitedArr.isVisited([startPoint[0] + 1, startPoint[1] - 2]) === false
         ) {
